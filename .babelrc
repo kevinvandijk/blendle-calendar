@@ -1,0 +1,9 @@
+{
+  "presets": [
+    ["env", {
+      "useBuiltIns": true,
+      "browsers": ["last 2 versions"]
+    }],
+    ["react"]
+  ]
+}
