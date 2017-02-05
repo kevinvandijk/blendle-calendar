@@ -20,4 +20,24 @@ describe('Helpers', () => {
       });
     });
   });
+
+  describe('PropTypes', () => {
+    describe('#hourNotation', () => {
+      const { hour: hourValidator } = helpers.PropTypes;
+
+      it('should be valid if the given hour is between (and including) 0 and 24', () => {
+        [...Array(25).keys()].forEach((hour) => {
+          expect(hourValidator({ hour }, 'hour')).toBeNull();
+        });
+      });
+
+      it('should return an error if the hour given is below 0 or above 24', () => {
+        const result1 = hourValidator({ hour: -1 }, 'hour');
+        const result2 = hourValidator({ hour: 25 }, 'hour');
+
+        expect(result1).toBeInstanceOf(Error);
+        expect(result2).toBeInstanceOf(Error);
+      });
+    });
+  });
 });

@@ -1,7 +1,8 @@
 import React from 'react';
-import { formatHours } from '../../helpers';
+import { formatHours, PropTypes } from '../../helpers';
 import './styles.scss';
 
+const { hour } = PropTypes;
 
 const DailyEvents = (props) => {
   const { displayHours, startHour } = props;
@@ -20,14 +21,9 @@ const DailyEvents = (props) => {
   );
 };
 
-const isValidHour = (props, propName) => {
-  // TODO
-  return null;
-};
-
 DailyEvents.propTypes = {
-  displayHours: isValidHour,
-  startHour: isValidHour
+  displayHours: hour,
+  startHour: hour
 };
 
 DailyEvents.defaultProps = {
