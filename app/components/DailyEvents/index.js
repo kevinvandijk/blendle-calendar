@@ -1,4 +1,5 @@
 import React from 'react';
+import Hour from './Hour';
 import { formatHours, PropTypes } from '../../helpers';
 import './styles.scss';
 
@@ -13,9 +14,10 @@ const DailyEvents = (props) => {
     <div className="DailyEvents">
       <div className={ listClassName }>
         {[...Array(displayHours)].map((a, i) => (
-          <li className="DailyEvents-hour">
-            <time>{ formatHours(startHour + i) }</time>
-          </li>
+          <Hour
+            key={ `hour-${startHour + i}` }
+            label={ formatHours(startHour + i) }
+          />
         ))}
       </div>
 

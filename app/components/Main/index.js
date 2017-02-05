@@ -9,7 +9,7 @@ export default class Main extends React.Component {
           <h2>Today&#39;s appointments</h2>
         </header>
         <main>
-          <DailyEvents />
+          <DailyEvents displayHours={ 11 } />
         </main>
       </div>
     );
