@@ -1,11 +1,7 @@
 import React from 'react';
-
+import { formatHours } from '../../helpers';
 import './styles.scss';
 
-const formatHourFromStart = (startHour, i) => {
-  // TODO
-  return startHour + i;
-};
 
 const DailyEvents = (props) => {
   const { displayHours, startHour } = props;
@@ -15,7 +11,7 @@ const DailyEvents = (props) => {
       <div className="DailyEvents-list">
         {[...Array(displayHours)].map((a, i) => (
           <li className="DailyEvents-hour">
-            <time>{ formatHourFromStart(startHour, i) }</time>
+            <time>{ formatHours(startHour + i) }</time>
           </li>
         ))}
       </div>
