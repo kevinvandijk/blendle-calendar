@@ -49,6 +49,7 @@ export const PropTypes = {
   })
 };
 
+// Untested with other units than hour right now
 export function calculatePositions(appointments, timeUnit = 'hour') {
   if (!appointments) return [];
   if (Array.isArray(appointments) && !appointments.length) return [];
@@ -58,23 +59,21 @@ export function calculatePositions(appointments, timeUnit = 'hour') {
   return appointments.map((appointment) => {
     const appointmentStart = moment(appointment.start);
     const appointmentEnd = moment(appointment.end);
-    const appointmentRange = moment.range(appointmentStart, appointmentEnd);
 
     const appointmentOverlaps = appointments.filter((comparison) => {
-      const comparisonStart = moment(comparison.start);
-      const comparisonEnd = moment(comparison.end);
-      const comparisonRange = moment.range(comparisonStart, comparisonEnd);
+      const comparisonRange = moment.range(comparison.start, comparison.end);
+      const appointmentRange = moment.range(appointmentStart, appointmentEnd);
 
       return appointmentRange.overlaps(comparisonRange);
     });
 
     const width = 100 / appointmentOverlaps.length;
     const left = appointmentOverlaps.filter((o) => overlaps.includes(o.id)).length * width;
-    overlaps.push(appointment.id);
-
     const startOfHour = appointmentStart.clone().startOf(timeUnit);
     const top = appointmentStart.diff(startOfHour, timeUnit, true) * 100;
     const height = appointmentEnd.diff(appointmentStart, timeUnit, true) * 100;
+
+    overlaps.push(appointment.id);
 
     return {
       ...appointment,
