@@ -1,0 +1,45 @@
+.DailyEvents {
+  width: 540px;
+  height: 610px;
+  background: #fff;
+
+}
+
+.DailyEvents-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  padding: 20px 40px 22px;
+  padding-top: 20px;
+  height: 100%;
+  list-style: none;
+}
+
+$paddingLeft: 4ch;
+.DailyEvents-hour {
+  position: relative;
+  padding-left: $paddingLeft;
+  min-height: 55px;
+
+  flex-grow: 1;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: $paddingLeft;
+    height: 1px;
+    background: rgba(#B5B5B5, .2);
+    content: "";
+  }
+
+
+  > time {
+    position: absolute;
+    top: -.5em;
+    left: 0;
+    color: #B5B5B5;
+    font-size: 12px;
+    line-height: 1;
+  }
+}
