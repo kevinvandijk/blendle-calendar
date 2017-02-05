@@ -18,7 +18,8 @@
       "allowMultiline": true
     }],
     "react/prefer-stateless-function": 1,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/require-default-props": 0
   },
   "env": {
     "browser": true,
