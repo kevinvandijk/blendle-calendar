@@ -20,7 +20,7 @@
 }
 
 $paddingLeft: 4ch;
-.DailyEvents-hour {
+.DailyEvents-Hour {
   position: relative;
   padding-left: $paddingLeft;
   min-height: 55px;
@@ -46,4 +46,48 @@ $paddingLeft: 4ch;
     font-size: 12px;
     line-height: 1;
   }
+}
+
+.DailyEvents-Appointment {
+  background: #FF6255;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 8px 20px 15px;
+  // max-width: 50%;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+}
+
+.DailyEvents-Appointment-content {
+  margin: 0;
+  padding: 0;
+}
+
+.DailyEvents-Appointment-title {
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: normal;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.DailyEvents-Appointment-time {
+  font-size: 14px;
+  float: right;
+  line-height: 1.9;
+  color: rgba(#fff, .6);
+  margin-left: 6px;
+}
+
+.DailyEvents-Appointment-description {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(#fff, .8);
 }
