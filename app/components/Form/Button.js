@@ -5,7 +5,7 @@ const { string, oneOf } = PropTypes;
 
 const Button = (props) => {
   let buttonClass = 'Form-Button';
-  if (props.type === 'primary') buttonClass = `${buttonClass} Form-Button--isPrimary`;
+  if (props.type === 'submit') buttonClass = `${buttonClass} Form-Button--isPrimary`;
 
   return (
     <button className={ buttonClass }>
@@ -16,7 +16,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   label: string.isRequired,
-  type: oneOf(['default', 'primary'])
+  type: oneOf(['default', 'submit'])
 };
 
 Button.defaultProps = {
