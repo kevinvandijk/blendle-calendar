@@ -8,3 +8,29 @@ body {
   background: #475171;
   font-family: 'Open Sans', sans-serif;
 }
+
+.Container {
+  position: relative;
+  margin: 0 auto;
+  width: 780px;
+}
+
+.AppointmentList {
+  position: relative;
+  display: inline-block;
+  width: 540px;
+  height: 670px;
+  background: #fff; // FIXME: maybe not needed
+  box-shadow: 0 0 4px 0 rgba(#000, .13), 0 18px 30px 0 rgba(#000, .13);
+  vertical-align: top;
+}
+
+.AddAppointment {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 20px;
+  width: 240px;
+  height: 630px;
+  background: #F8F8F8;
+  vertical-align: top;
+}
