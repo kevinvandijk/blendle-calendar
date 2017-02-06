@@ -43,6 +43,15 @@ body {
   vertical-align: top;
 }
 
+.AppointmentList-title {
+  color: #333;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0;
+  padding: 16px 40px;
+  border-bottom: 1px solid rgba(#B5B5B5, .5);
+}
+
 .AddAppointment {
   display: inline-block;
   margin-top: 20px;

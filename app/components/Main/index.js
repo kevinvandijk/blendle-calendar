@@ -34,12 +34,13 @@ const appointments = [
 export default class Main extends React.Component {
   render() {
     return (
-      <div>
-        <header>
-          <h2>Today&#39;s appointments</h2>
+      <div className="MainContainer">
+        <header className="PageHeader">
+          <h2 className="PageHeader-title">Today&#39;s appointments</h2>
         </header>
-        <main className="Container">
+        <main className="CalendarContainer">
           <div className="AppointmentList">
+            <h1 className="AppointmentList-title"><time>1 augustus 2016</time></h1>
             <DailyEvents displayHours={ 11 } appointments={ appointments } />
           </div>
           <div className="AddAppointment">
