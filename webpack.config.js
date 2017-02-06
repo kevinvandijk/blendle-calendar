@@ -57,32 +57,31 @@ module.exports = {
       {
         test: /\.(gif|jpg|png)$/,
         loader: 'url-loader?limit=25000',
-        include: path.join(ASSETS_PATH, 'images')
+        include: ASSETS_PATH
       },
 
       // Fonts
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=10000&mimetype=application/font-woff',
-        include: path.join(ASSETS_PATH, 'fonts')
+        include: ASSETS_PATH
       },
 
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
-        include: path.join(ASSETS_PATH, 'fonts')
+        include: ASSETS_PATH
       },
 
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader',
-        include: path.join(ASSETS_PATH, 'fonts')
+        include: ASSETS_PATH
       },
-
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-        include: path.join(ASSETS_PATH, 'fonts')
+        include: ASSETS_PATH
       }
     ]
   }
