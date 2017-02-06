@@ -22,8 +22,8 @@
 $paddingLeft: 4ch;
 .DailyEvents-Hour {
   position: relative;
-  padding-left: $paddingLeft;
   min-height: 55px;
+  margin-left: 40px;
 
   flex-grow: 1;
 
@@ -31,7 +31,7 @@ $paddingLeft: 4ch;
     position: absolute;
     top: 0;
     right: 0;
-    left: $paddingLeft;
+    left: 0;
     height: 1px;
     background: rgba(#B5B5B5, .2);
     content: "";
@@ -41,7 +41,7 @@ $paddingLeft: 4ch;
   > time {
     position: absolute;
     top: -.5em;
-    left: 0;
+    left: calc(-5ex + -10px);
     color: #B5B5B5;
     font-size: 12px;
     line-height: 1;

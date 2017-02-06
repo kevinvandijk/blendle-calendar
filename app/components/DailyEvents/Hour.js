@@ -7,9 +7,7 @@ const Hour = (props) => {
   return (
     <li className="DailyEvents-Hour">
       <time>{ props.label }</time>
-      <div>
-        { props.children }
-      </div>
+      { props.children }
     </li>
   );
 };
