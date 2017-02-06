@@ -1,0 +1,7 @@
+exports[`Components Form Renders itself with children 1`] = `
+<div>
+  <div>
+    Form children woot
+  </div>
+</div>
+`;
