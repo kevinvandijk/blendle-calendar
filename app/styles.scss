@@ -5,21 +5,39 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: #475171;
   font-family: 'Open Sans', sans-serif;
 }
 
-.Container {
+.MainContainer {
+  margin-top: 46px;
+}
+
+.CalendarContainer,
+.PageHeader {
   position: relative;
   margin: 0 auto;
   width: 780px;
 }
 
+.PageHeader-title {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 41px;
+}
+
 .AppointmentList {
   position: relative;
   display: inline-block;
+  overflow: hidden;
   width: 540px;
   height: 670px;
+  border-radius: 4px;
   background: #fff; // FIXME: maybe not needed
   box-shadow: 0 0 4px 0 rgba(#000, .13), 0 18px 30px 0 rgba(#000, .13);
   vertical-align: top;
@@ -31,6 +49,7 @@ body {
   padding: 20px;
   width: 240px;
   height: 630px;
+  border-radius: 0 4px 4px 0;
   background: #F8F8F8;
   vertical-align: top;
 }
