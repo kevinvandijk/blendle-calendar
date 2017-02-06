@@ -42,6 +42,7 @@ const DailyEvents = (props) => {
                   return (
                     <Appointment
                       title={ event.title }
+                      description={ event.description }
                       start={ event.start }
                       end={ event.end }
                       top={ event.top }
