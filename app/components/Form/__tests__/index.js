@@ -35,7 +35,7 @@ describe('Components', () => {
 
     it('Attaches components and is able to return their values, sorted by name', () => {
       const name1 = 'A component has no name';
-      const name2 = 'A component always pays its debts'
+      const name2 = 'A component always pays its debts';
       const value = 'Value is coming';
       const instance = shallow(<Form />).instance();
 

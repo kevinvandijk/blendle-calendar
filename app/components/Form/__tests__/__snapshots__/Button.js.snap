@@ -1,0 +1,15 @@
+exports[`Components Form/Button Renders a button with different styling when type is submit 1`] = `
+<button
+  className="Form-Button Form-Button--isPrimary"
+  onClick={[Function]}>
+  Stuff
+</button>
+`;
+
+exports[`Components Form/Button Renders a default button 1`] = `
+<button
+  className="Form-Button"
+  onClick={[Function]}>
+  Stuff
+</button>
+`;
