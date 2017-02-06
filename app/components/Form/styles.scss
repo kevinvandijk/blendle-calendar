@@ -1,4 +1,4 @@
-.Form-Input-field {
+.Form-InputField {
   display: block;
   margin: 5px 0 10px;
   padding: 10px;
@@ -10,19 +10,19 @@
   font-family: inherit;
 }
 
-.Form-Input-label {
+.Form-InputField-label {
   margin: 0;
   color: #333;
   font-size: 14px;
   line-height: 1;
 }
 
-.Form-Input-date {
+.Form-InputField-date {
   padding-left: 38px;
   background: #fff url(../../assets/images/calendar-icon.svg) no-repeat 10px center;
 }
 
-.Form-Input-textarea {
+.Form-InputField-textarea {
   height: 100px;
   resize: none;
 }

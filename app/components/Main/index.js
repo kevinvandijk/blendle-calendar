@@ -45,10 +45,10 @@ export default class Main extends React.Component {
           </div>
           <div className="AddAppointment">
             <Form>
-              <Input name="title" type="text" label="Title" />
-              <Input name="start" type="date" label="Start time" />
-              <Input name="end" type="date" label="End time" />
-              <Input name="description" type="textarea" label="Description" />
+              <InputField name="title" type="text" label="Title" />
+              <InputField name="start" type="date" label="Start time" />
+              <InputField name="end" type="date" label="End time" />
+              <InputField name="description" type="textarea" label="Description" />
               <Button label="Save" type="primary" />
               <Button label="Cancel" />
             </Form>

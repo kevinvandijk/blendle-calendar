@@ -3,13 +3,13 @@ import { PropTypes } from '../../helpers';
 
 const { oneOf, string } = PropTypes;
 
-const Input = (props) => {
-  let inputClass = 'Form-Input-field';
-  if (props.type === 'date') inputClass = `${inputClass} Form-Input-date`;
-  if (props.type === 'textarea') inputClass = `${inputClass} Form-Input-textarea`;
+const InputField = (props) => {
+  let inputClass = 'Form-InputField';
+  if (props.type === 'date') inputClass = `${inputClass} Form-InputField-date`;
+  if (props.type === 'textarea') inputClass = `${inputClass} Form-InputField-textarea`;
 
   return (
-    <label htmlFor={ props.name } className="Form-Input-label">
+    <label htmlFor={ props.name } className="Form-InputField-label">
       { props.label }
 
       { props.type === 'textarea'
@@ -20,14 +20,14 @@ const Input = (props) => {
   );
 };
 
-Input.propTypes = {
+InputField.propTypes = {
   label: string,
   name: string.isRequired,
   type: oneOf(['text', 'textarea', 'date'])
 };
 
-Input.defaultProps = {
+InputField.defaultProps = {
   type: 'text'
 };
 
-export default Input;
+export default InputField;
