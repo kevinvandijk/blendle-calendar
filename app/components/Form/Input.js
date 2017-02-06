@@ -6,7 +6,7 @@ const { oneOf, string } = PropTypes;
 const Input = (props) => {
   let inputClass = 'Form-Input-field';
   if (props.type === 'date') inputClass = `${inputClass} Form-Input-date`;
-  if (props.type === 'textarea') inputClass = `${inputClass} Form-Input-textarea`
+  if (props.type === 'textarea') inputClass = `${inputClass} Form-Input-textarea`;
 
   return (
     <label htmlFor={ props.name } className="Form-Input-label">
