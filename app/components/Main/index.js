@@ -1,7 +1,7 @@
 import React from 'react';
 import DailyEvents from '../DailyEvents';
 import Form from '../Form';
-import Input from '../Form/Input';
+import InputField from '../Form/InputField';
 import Button from '../Form/Button';
 
 const appointments = [
@@ -49,8 +49,8 @@ export default class Main extends React.Component {
               <InputField name="start" type="date" label="Start time" />
               <InputField name="end" type="date" label="End time" />
               <InputField name="description" type="textarea" label="Description" />
-              <Button label="Save" type="primary" />
-              <Button label="Cancel" />
+              <Button label="Save" type="submit" />
+              <Button label="Cancel" type="reset" />
             </Form>
           </div>
         </main>

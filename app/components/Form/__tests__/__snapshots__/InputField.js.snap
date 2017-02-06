@@ -1,0 +1,51 @@
+exports[`Components Form Renders a date input when type is set to date 1`] = `
+<label
+  className="Form-InputField-label"
+  htmlFor="name">
+  <input
+    className="Form-InputField Form-InputField-date"
+    id="name"
+    onChange={[Function]}
+    type="text"
+    value="" />
+</label>
+`;
+
+exports[`Components Form Renders a textarea when type is set to textarea 1`] = `
+<label
+  className="Form-InputField-label"
+  htmlFor="name">
+  <textarea
+    className="Form-InputField Form-InputField-textarea"
+    id="name"
+    onChange={[Function]}
+    value="" />
+</label>
+`;
+
+exports[`Components Form Renders an input field with a label when label is given 1`] = `
+<label
+  className="Form-InputField-label"
+  htmlFor="name">
+  The label yo
+  <input
+    className="Form-InputField"
+    id="name"
+    onChange={[Function]}
+    type="text"
+    value="" />
+</label>
+`;
+
+exports[`Components Form Renders an input field without a label 1`] = `
+<label
+  className="Form-InputField-label"
+  htmlFor="name">
+  <input
+    className="Form-InputField"
+    id="name"
+    onChange={[Function]}
+    type="text"
+    value="" />
+</label>
+`;
