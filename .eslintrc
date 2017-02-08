@@ -10,6 +10,8 @@
     "comma-dangle": 0,
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
     "no-unused-vars": 1,
+    "operator-assignment": ["error", "never"],
+    "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-curly-spacing": [2, "always", {
       "spacing": {
