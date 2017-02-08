@@ -53,6 +53,7 @@ class Form extends React.Component {
     const values = this.getValues();
 
     if (this.props.onSubmit) this.props.onSubmit(values);
+    this.reset();
   }
 
   reset = () => {

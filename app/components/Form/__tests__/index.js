@@ -10,7 +10,8 @@ function createMockInputComponent(name, value) {
     },
     getValue() {
       return value;
-    }
+    },
+    setValue: () => {}
   };
 }
 
@@ -93,6 +94,18 @@ describe('Components', () => {
 
       expect(stub1).toHaveBeenCalledWith('');
       expect(stub2).toHaveBeenCalledWith('');
+    });
+
+    it('Resets the form on submit', () => {
+      const instance = shallow(<Form />).instance();
+      const mock1 = createMockInputComponent('bla', 'something');
+      const resetStub = jest.fn();
+      instance.reset = resetStub;
+
+      instance.attach(mock1);
+      instance.submit();
+
+      expect(resetStub).toHaveBeenCalled();
     });
   });
 });
