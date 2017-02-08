@@ -27,6 +27,63 @@ const chainablePropType = (predicate) => {
   return propType;
 };
 
+function sortByTimeRange(items) {
+  return items.sort((a, b) => {
+    const rangeA = moment().range(a.start, a.end);
+    const rangeB = moment().range(b.start, b.end);
+
+    // Longest ranges should move to the front
+    if (rangeA < rangeB) return 1;
+    if (rangeA > rangeB) return -1;
+
+    const startA = moment(a.start);
+    const startB = moment(b.start);
+
+    if (startA < startB) return -1;
+    if (startA > startB) return 1;
+
+    return 0;
+  });
+}
+
+function getOrganizedAppointments(appointments) {
+  return appointments.map((currentAppointment) => {
+    const currentRange = moment().range(currentAppointment.start, currentAppointment.end);
+    const rawOverlaps = [];
+    const overlaps = [];
+
+    for (let i = 0; i < appointments.length; i++) {
+      const comparisonAppointment = appointments[i];
+
+      if (comparisonAppointment.id !== currentAppointment.id) {
+        const comparisonRange = moment().range(
+          comparisonAppointment.start,
+          comparisonAppointment.end
+        );
+
+        if (comparisonRange.overlaps(currentRange)) {
+          const previousOverlap = rawOverlaps[rawOverlaps.length - 1];
+
+          if (previousOverlap) {
+            if (previousOverlap.end > comparisonAppointment.start) {
+              overlaps.push(comparisonAppointment.id);
+            }
+          } else {
+            overlaps.push(comparisonAppointment.id);
+          }
+
+          rawOverlaps.push(comparisonAppointment);
+        }
+      }
+    }
+
+    return {
+      ...currentAppointment,
+      overlaps
+    };
+  });
+}
+
 // Formatters
 export function formatHours(amountOfHours) {
   const hour = (amountOfHours < 24
@@ -49,38 +106,74 @@ export const PropTypes = {
   })
 };
 
-// Untested with other units than hour right now
 export function calculatePositions(appointments, timeUnit = 'hour') {
   if (!appointments) return [];
   if (Array.isArray(appointments) && !appointments.length) return [];
 
-  const overlaps = [];
+  const sortedAppointments = sortByTimeRange(appointments);
+  const overlappedAppointments = getOrganizedAppointments(sortedAppointments);
 
-  return appointments.map((appointment) => {
-    const appointmentStart = moment(appointment.start);
-    const appointmentEnd = moment(appointment.end);
+  const findSortedIndex = (id) => {
+    return overlappedAppointments.findIndex((item) => item.id === id);
+  };
 
-    const appointmentOverlaps = appointments.filter((comparison) => {
-      const comparisonRange = moment.range(comparison.start, comparison.end);
-      const appointmentRange = moment.range(appointmentStart, appointmentEnd);
+  const findAppointment = (id) => {
+    return overlappedAppointments.find((app) => app.id === id);
+  };
 
-      return appointmentRange.overlaps(comparisonRange);
-    });
+  for (let i = 0; i < overlappedAppointments.length; i++) {
+    const currentAppointment = overlappedAppointments[i];
+    let left = 0;
+    let width = 100;
 
-    const width = 100 / appointmentOverlaps.length;
-    const left = appointmentOverlaps.filter((o) => overlaps.includes(o.id)).length * width;
-    const startOfHour = appointmentStart.clone().startOf(timeUnit);
-    const top = appointmentStart.diff(startOfHour, timeUnit, true) * 100;
-    const height = appointmentEnd.diff(appointmentStart, timeUnit, true) * 100;
+    if (currentAppointment.overlaps.length) {
+      const currentSortedIndex = findSortedIndex(currentAppointment.id);
 
-    overlaps.push(appointment.id);
+      const prevOverlaps = currentAppointment.overlaps.filter((overlapId) => {
+        return findSortedIndex(overlapId) < currentSortedIndex;
+      });
 
-    return {
-      ...appointment,
-      left,
-      width,
-      top,
-      height
-    };
-  });
+      const nextOverlaps = currentAppointment.overlaps.filter((overlapId) => {
+        return findSortedIndex(overlapId) > currentSortedIndex;
+      });
+
+      if (!prevOverlaps.length) {
+        width = (100 / (nextOverlaps.length + 1));
+      } else {
+        const prevWidth = prevOverlaps.reduce((total, overlapId, c, all) => {
+          const earlierAppointment = findAppointment(all[c - 1]);
+
+          // Make sure the previous overlap isn't actually just an appointment
+          // that ends before this one, if so: no need to position it differently
+          if (earlierAppointment) {
+            const overlappingAppointment = findAppointment(overlapId);
+
+            if (moment(earlierAppointment.end) <= moment(overlappingAppointment.start)) {
+              return total;
+            }
+          }
+
+          return total + (findAppointment(overlapId).width || 0);
+        }, 0);
+
+        left = prevWidth;
+        width = width - prevWidth;
+
+        if (nextOverlaps.length) {
+          width = width / (nextOverlaps.length + 1);
+        }
+      }
+    }
+
+    const startOfHour = moment(currentAppointment.start).startOf(timeUnit);
+    const currentStart = moment(currentAppointment.start);
+    const currentEnd = moment(currentAppointment.end);
+
+    currentAppointment.left = left;
+    currentAppointment.width = width;
+    currentAppointment.top = currentStart.diff(startOfHour, timeUnit, true) * 100;
+    currentAppointment.height = currentEnd.diff(currentStart, timeUnit, true) * 100;
+  }
+
+  return overlappedAppointments;
 }
