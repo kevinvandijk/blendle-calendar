@@ -41,6 +41,7 @@ const DailyEvents = (props) => {
                 display.map((event) => {
                   return (
                     <Appointment
+                      key={ event.id }
                       title={ event.title }
                       description={ event.description }
                       start={ event.start }
