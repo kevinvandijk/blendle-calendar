@@ -7,7 +7,7 @@ import { formatHours, PropTypes, calculatePositions, createAppointmentStyle } fr
 import './styles.scss';
 
 const moment = extendMoment(Moment);
-const { hour, bool, array } = PropTypes;
+const { hour, bool, arrayOf, appointment } = PropTypes;
 
 const DailyEvents = (props) => {
   const { scrollable, displayHours, startHour } = props;
@@ -68,7 +68,7 @@ DailyEvents.propTypes = {
   displayHours: hour,
   startHour: hour,
   scrollable: bool,
-  appointments: array
+  appointments: arrayOf(appointment)
 };
 
 DailyEvents.defaultProps = {
