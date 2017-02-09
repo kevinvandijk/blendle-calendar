@@ -17,6 +17,18 @@ class Main extends React.Component {
     appointments: array
   }
 
+  addAppointment = (details) => {
+    const date = moment().format('YYYY-MM-DD');
+    const start = `${date} ${details.start}`;
+    const end = `${date} ${details.end}`;
+
+    this.props.addAppointment({
+      ...details,
+      start,
+      end
+    });
+  }
+
   render() {
     return (
       <div className="MainContainer">
@@ -29,7 +41,7 @@ class Main extends React.Component {
             <DailyEvents displayHours={ 11 } appointments={ this.props.appointments } />
           </div>
           <div className="AddAppointment">
-            <Form>
+            <Form onSubmit={ this.addAppointment }>
               <InputField name="title" type="text" label="Title" />
               <InputField name="start" type="date" label="Start time" />
               <InputField name="end" type="date" label="End time" />
