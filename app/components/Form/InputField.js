@@ -9,7 +9,9 @@ class InputField extends React.Component {
     label: string,
     name: string.isRequired,
     type: oneOf(['text', 'textarea', 'date']),
-    value: string
+    value: string,
+    onBlur: func,
+    onChange: func
   }
 
   static defaultProps = {
@@ -64,6 +66,10 @@ class InputField extends React.Component {
     this.setState({
       value
     });
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   }
 
   onBlur = () => {
@@ -71,6 +77,10 @@ class InputField extends React.Component {
       this.setState({
         value: time(this.state.value).format('HH:mm')
       });
+    }
+
+    if (this.props.onBlur) {
+      this.props.onBlur(this.state.value);
     }
   }
 
