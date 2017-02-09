@@ -7,6 +7,8 @@ exports[`Components Form Renders a date input when type is set to date 1`] = `
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>
@@ -19,7 +21,10 @@ exports[`Components Form Renders a textarea when type is set to textarea 1`] = `
   <textarea
     className="Form-InputField Form-InputField-textarea"
     id="name"
+    onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
     value="" />
 </label>
 `;
@@ -34,6 +39,8 @@ exports[`Components Form Renders an input field with a label when label is given
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>
@@ -48,6 +55,8 @@ exports[`Components Form Renders an input field without a label 1`] = `
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>

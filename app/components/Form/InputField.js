@@ -1,5 +1,5 @@
 import React from 'react';
-import time from 'time-js';
+import moment from 'moment';
 import { PropTypes } from '../../helpers';
 
 const { oneOf, string, func } = PropTypes;
@@ -11,6 +11,7 @@ class InputField extends React.Component {
     type: oneOf(['text', 'textarea', 'date']),
     value: string,
     onBlur: func,
+    onFocus: func,
     onChange: func
   }
 
@@ -60,28 +61,57 @@ class InputField extends React.Component {
   onChange = (e) => {
     let value = e.target.value;
     if (this.props.type === 'date') {
-      value = value.substr(0, 5);
+      // When entering time allow only digits and : and .
+      value = value.replace(/[^\d,:,.]+/gi, '');
+
+      // When entering time notation with : and ., the max is 5 characters
+      // When only entering digits, the max is 4 characters
+      if (value.match(/\d{1,2}[:,.]/g)) {
+        value = value.substr(0, 5);
+      } else {
+        value = value.substr(0, 4);
+      }
     }
 
     this.setState({
       value
     });
 
-    if (this.props.onChange) {
-      this.props.onChange(value);
-    }
+    if (this.props.onChange) this.props.onChange(value);
   }
 
   onBlur = () => {
+    this.setState({
+      focused: false
+    });
+
     if (this.props.type === 'date' && this.state.value.length) {
+      const value = this.state.value.replace(/[^\d]/g, '');
+
+      let formattedValue;
+      if (value.length <= 2) {
+        formattedValue = moment().hour(value).startOf('hour').format('HH:mm');
+      } else {
+        const minutes = value.slice(-2);
+        const hours = value.slice(0, -2);
+
+        formattedValue = moment().hour(hours).minute(minutes).format('HH:mm');
+      }
+
       this.setState({
-        value: time(this.state.value).format('HH:mm')
+        value: formattedValue
       });
     }
 
-    if (this.props.onBlur) {
-      this.props.onBlur(this.state.value);
-    }
+    if (this.props.onBlur) this.props.onBlur(this.state.value);
+  }
+
+  onFocus = () => {
+    this.setState({
+      focused: true
+    });
+
+    if (this.props.onFocus) this.props.onFocus();
   }
 
   getValue() {
@@ -111,6 +141,9 @@ class InputField extends React.Component {
               className={ inputClass }
               value={ this.state.value }
               onChange={ this.onChange }
+              onBlur={ this.onBlur }
+              onFocus={ this.onFocus }
+              ref={ (ref) => { this.input = ref; } }
             />
           :
             <input
@@ -120,6 +153,7 @@ class InputField extends React.Component {
               value={ this.state.value }
               onChange={ this.onChange }
               onBlur={ this.onBlur }
+              onFocus={ this.onFocus }
               ref={ (ref) => { this.input = ref; } }
             />
         }
