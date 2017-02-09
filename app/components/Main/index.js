@@ -1,37 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+
+import { PropTypes } from '../../helpers';
+import { addAppointment, getAppointmentsForDate } from '../../modules';
 import DailyEvents from '../DailyEvents';
 import Form from '../Form';
 import InputField from '../Form/InputField';
 import Button from '../Form/Button';
 
-const appointments = [
-  {
-    start: '2017-02-05 11:00',
-    end: '2017-02-05 12:00',
-    title: 'First',
-    id: 1
-  },
-  {
-    start: '2017-02-05 11:30',
-    end: '2017-02-05 12:30',
-    title: 'Second',
-    id: 2
-  },
-  {
-    start: '2017-02-05 13:00',
-    end: '2017-02-05 14:30',
-    title: 'Second',
-    id: 3
-  },
-  {
-    start: '2017-02-05 08:30',
-    end: '2017-02-05 12:30',
-    title: 'Second',
-    id: 4
-  }
-];
+const { func, array } = PropTypes;
 
-export default class Main extends React.Component {
+class Main extends React.Component {
+  static propTypes = {
+    addAppointment: func.isRequired,
+    appointments: array
+  }
+
   render() {
     return (
       <div className="MainContainer">
@@ -41,7 +26,7 @@ export default class Main extends React.Component {
         <main className="CalendarContainer">
           <div className="AppointmentList">
             <h1 className="AppointmentList-title"><time>1 augustus 2016</time></h1>
-            <DailyEvents displayHours={ 11 } appointments={ appointments } />
+            <DailyEvents displayHours={ 11 } appointments={ this.props.appointments } />
           </div>
           <div className="AddAppointment">
             <Form>
@@ -58,3 +43,15 @@ export default class Main extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    appointments: getAppointmentsForDate(state, moment().format('YYYY-MM-DD'))
+  };
+};
+
+const mapDispatchToProps = {
+  addAppointment
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
