@@ -3,12 +3,12 @@ exports[`Components Form Renders a date input when type is set to date 1`] = `
   className="Form-InputField-label"
   htmlFor="name">
   <input
+    autoFocus={undefined}
     className="Form-InputField Form-InputField-date"
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>
@@ -19,12 +19,12 @@ exports[`Components Form Renders a textarea when type is set to textarea 1`] = `
   className="Form-InputField-label"
   htmlFor="name">
   <textarea
+    autoFocus={undefined}
     className="Form-InputField Form-InputField-textarea"
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     value="" />
 </label>
 `;
@@ -35,12 +35,12 @@ exports[`Components Form Renders an input field with a label when label is given
   htmlFor="name">
   The label yo
   <input
+    autoFocus={undefined}
     className="Form-InputField"
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>
@@ -51,12 +51,12 @@ exports[`Components Form Renders an input field without a label 1`] = `
   className="Form-InputField-label"
   htmlFor="name">
   <input
+    autoFocus={undefined}
     className="Form-InputField"
     id="name"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    onKeyUp={[Function]}
     type="text"
     value="" />
 </label>

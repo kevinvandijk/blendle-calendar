@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { PropTypes } from '../../helpers';
 
-const { oneOf, string, func } = PropTypes;
+const { oneOf, string, func, bool } = PropTypes;
 
 class InputField extends React.Component {
   static propTypes = {
@@ -12,7 +12,8 @@ class InputField extends React.Component {
     value: string,
     onBlur: func,
     onFocus: func,
-    onChange: func
+    onChange: func,
+    autoFocus: bool
   }
 
   static defaultProps = {
@@ -126,7 +127,7 @@ class InputField extends React.Component {
 
   render() {
     let inputClass = 'Form-InputField';
-    const { type, name, label } = this.props;
+    const { type, name, label, autoFocus } = this.props;
     if (type === 'date') inputClass = `${inputClass} Form-InputField-date`;
     if (type === 'textarea') inputClass = `${inputClass} Form-InputField-textarea`;
 
@@ -143,6 +144,7 @@ class InputField extends React.Component {
               onChange={ this.onChange }
               onBlur={ this.onBlur }
               onFocus={ this.onFocus }
+              autoFocus={ autoFocus }
               ref={ (ref) => { this.input = ref; } }
             />
           :
@@ -154,6 +156,7 @@ class InputField extends React.Component {
               onChange={ this.onChange }
               onBlur={ this.onBlur }
               onFocus={ this.onFocus }
+              autoFocus={ autoFocus }
               ref={ (ref) => { this.input = ref; } }
             />
         }

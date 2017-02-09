@@ -56,7 +56,7 @@ class Main extends React.Component {
           </div>
           <div className="AddAppointment">
             <Form onSubmit={ this.addAppointment } onChange={ this.checkFields }>
-              <InputField name="title" type="text" label="Title" />
+              <InputField name="title" type="text" label="Title" autoFocus />
               <InputField name="start" type="date" label="Start time" />
               <InputField name="end" type="date" label="End time" />
               <InputField name="description" type="textarea" label="Description" />
