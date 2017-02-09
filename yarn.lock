@@ -5309,6 +5309,10 @@ through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
+time-js@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/time-js/-/time-js-0.0.5.tgz#4795866852d96a16059bb61114c4cdc8688ebf17"
+
 timers-browserify@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"

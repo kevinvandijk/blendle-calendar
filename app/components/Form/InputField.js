@@ -1,4 +1,5 @@
 import React from 'react';
+import time from 'time-js';
 import { PropTypes } from '../../helpers';
 
 const { oneOf, string, func } = PropTypes;
@@ -14,16 +15,13 @@ class InputField extends React.Component {
   static defaultProps = {
     type: 'text',
     value: ''
-  };
+  }
 
   static contextTypes = {
     attach: func,
     detach: func
   }
 
-  state = {
-    value: ''
-  }
 
   constructor(props) {
     super(props);
@@ -31,6 +29,10 @@ class InputField extends React.Component {
     this.state = {
       value: props.value
     };
+  }
+
+  state = {
+    value: ''
   }
 
   componentWillMount() {
@@ -54,9 +56,22 @@ class InputField extends React.Component {
   }
 
   onChange = (e) => {
+    let value = e.target.value;
+    if (this.props.type === 'date') {
+      value = value.substr(0, 5);
+    }
+
     this.setState({
-      value: e.target.value
+      value
     });
+  }
+
+  onBlur = () => {
+    if (this.props.type === 'date' && this.state.value.length) {
+      this.setState({
+        value: time(this.state.value).format('HH:mm')
+      });
+    }
   }
 
   getValue() {
@@ -94,6 +109,8 @@ class InputField extends React.Component {
               type="text"
               value={ this.state.value }
               onChange={ this.onChange }
+              onBlur={ this.onBlur }
+              ref={ (ref) => { this.input = ref; } }
             />
         }
       </label>
