@@ -26,6 +26,13 @@ class Main extends React.Component {
     const start = `${date} ${details.start}`;
     const end = `${date} ${details.end}`;
 
+    if (moment(start) >= moment(end)) {
+      /* eslint-disable no-alert */
+      alert('The appointment can not end before it started, please fill in a later end time');
+      return;
+      /* eslint-enable no-alert */
+    }
+
     this.props.addAppointment({
       ...details,
       start,
