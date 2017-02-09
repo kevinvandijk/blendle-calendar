@@ -78,7 +78,10 @@ class InputField extends React.Component {
       value
     });
 
-    if (this.props.onChange) this.props.onChange(value);
+    // To make sure that state was updated:
+    setTimeout(() => {
+      if (this.props.onChange) this.props.onChange(value);
+    });
   }
 
   onBlur = () => {
@@ -104,7 +107,10 @@ class InputField extends React.Component {
       });
     }
 
-    if (this.props.onBlur) this.props.onBlur(this.state.value);
+    // To make sure that state was updated:
+    setTimeout(() => {
+      if (this.props.onBlur) this.props.onBlur(this.state.value);
+    });
   }
 
   onFocus = () => {

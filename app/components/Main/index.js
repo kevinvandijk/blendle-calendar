@@ -31,13 +31,17 @@ class Main extends React.Component {
       start,
       end
     });
+
+    this.setState({
+      valid: false
+    });
   }
 
   checkFields = (inputs) => {
     const toValidate = inputs;
     delete toValidate.description;
 
-    const invalid = Object.keys(toValidate).some((name) => !inputs[name].length);
+    const invalid = Object.keys(toValidate).some((name) => inputs[name].length < 1);
     this.setState({
       valid: !invalid
     });
