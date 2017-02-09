@@ -2,22 +2,22 @@ import React from 'react';
 import moment from 'moment';
 import { PropTypes } from '../../helpers';
 
-const { number, string } = PropTypes;
+const { string } = PropTypes;
 
 // h-calendar 2.0 compatible
 const Appointment = (props) => {
-  const appointmentStyle = {
-    width: `${props.width}%`,
-    height: `${props.height}%`,
-    top: `${props.top}%`,
-    left: `${props.left}%`
+  const style = {
+    width: props.width,
+    height: props.height,
+    top: props.top,
+    left: props.left
   };
 
   const start = moment(props.start);
   const end = moment(props.end);
 
   return (
-    <dl className="DailyEvents-Appointment h-event" style={ appointmentStyle }>
+    <dl className="DailyEvents-Appointment h-event" style={ style }>
       <dt className="DailyEvents-Appointment-time">
         <time className="dt-start" dateTime={ start.format() }>{ start.format('HH:mm') }</time>
         -
@@ -34,10 +34,10 @@ const Appointment = (props) => {
 };
 
 Appointment.propTypes = {
-  width: number.isRequired,
-  height: number.isRequired,
-  top: number.isRequired,
-  left: number.isRequired,
+  width: string.isRequired,
+  height: string.isRequired,
+  top: string.isRequired,
+  left: string.isRequired,
   title: string.isRequired,
   start: string.isRequired,
   end: string.isRequired,

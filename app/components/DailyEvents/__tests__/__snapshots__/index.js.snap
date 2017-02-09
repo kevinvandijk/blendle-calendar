@@ -247,9 +247,9 @@ exports[`Components DailyEvents Renders given appointments and looks at the time
         style={
           Object {
             "height": "233.33333333333334%",
-            "left": "33.333333333333336%",
+            "left": "calc(33.333333333333336% + 2.5px)",
             "top": "0%",
-            "width": "33.33333333333333%",
+            "width": "calc(33.33333333333333% - 5px)",
           }
         }>
         <dt
@@ -279,9 +279,9 @@ exports[`Components DailyEvents Renders given appointments and looks at the time
         style={
           Object {
             "height": "171.66666666666666%",
-            "left": "66.66666666666666%",
+            "left": "calc(66.66666666666666% + 2.5px)",
             "top": "0%",
-            "width": "33.33333333333334%",
+            "width": "calc(33.33333333333334% - 2.5px)",
           }
         }>
         <dt
@@ -319,7 +319,7 @@ exports[`Components DailyEvents Renders given appointments and looks at the time
             "height": "900%",
             "left": "0%",
             "top": "0%",
-            "width": "33.333333333333336%",
+            "width": "calc(33.333333333333336% - 2.5px)",
           }
         }>
         <dt
@@ -355,9 +355,9 @@ exports[`Components DailyEvents Renders given appointments and looks at the time
         style={
           Object {
             "height": "66.66666666666666%",
-            "left": "33.333333333333336%",
+            "left": "calc(33.333333333333336% + 2.5px)",
             "top": "33.33333333333333%",
-            "width": "66.66666666666666%",
+            "width": "calc(66.66666666666666% - 2.5px)",
           }
         }>
         <dt

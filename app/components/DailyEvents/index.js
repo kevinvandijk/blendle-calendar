@@ -3,7 +3,7 @@ import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import Hour from './Hour';
 import Appointment from './Appointment';
-import { formatHours, PropTypes, calculatePositions } from '../../helpers';
+import { formatHours, PropTypes, calculatePositions, createAppointmentStyle } from '../../helpers';
 import './styles.scss';
 
 const moment = extendMoment(Moment);
@@ -39,6 +39,7 @@ const DailyEvents = (props) => {
             >
               {
                 display.map((event) => {
+                  const style = createAppointmentStyle(event);
                   return (
                     <Appointment
                       key={ event.id }
@@ -46,10 +47,10 @@ const DailyEvents = (props) => {
                       description={ event.description }
                       start={ event.start }
                       end={ event.end }
-                      top={ event.top }
-                      height={ event.height }
-                      width={ event.width }
-                      left={ event.left }
+                      top={ style.top }
+                      height={ style.height }
+                      width={ style.width }
+                      left={ style.left }
                     />
                   );
                 })

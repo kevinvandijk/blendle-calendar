@@ -106,6 +106,39 @@ export const PropTypes = {
   })
 };
 
+export function createAppointmentStyle(appointment) {
+  const style = {
+    width: `${appointment.width}%`,
+    height: `${appointment.height}%`,
+    top: `${appointment.top}%`,
+    left: `${appointment.left}%`
+  };
+
+  if (appointment.nextOverlaps && !appointment.left) {
+    style.width = `calc(${style.width} - 2.5px)`;
+    return style;
+  }
+
+  if (appointment.prevOverlaps && appointment.nextOverlaps) {
+    style.left = `calc(${style.left} + 2.5px)`;
+    style.width = `calc(${style.width} - 5px)`;
+    return style;
+  }
+
+  if (appointment.nextOverlaps) {
+    style.width = `calc(${style.width} - 2.5px)`;
+    return style;
+  }
+
+  if (appointment.prevOverlaps) {
+    style.left = `calc(${style.left} + 2.5px)`;
+    style.width = `calc(${style.width} - 2.5px)`;
+    return style;
+  }
+
+  return style;
+}
+
 export function calculatePositions(appointments, timeUnit = 'hour') {
   if (!appointments) return [];
   if (Array.isArray(appointments) && !appointments.length) return [];
@@ -139,7 +172,9 @@ export function calculatePositions(appointments, timeUnit = 'hour') {
 
       if (!prevOverlaps.length) {
         width = (100 / (nextOverlaps.length + 1));
+        currentAppointment.nextOverlaps = true;
       } else {
+        currentAppointment.prevOverlaps = true;
         const prevWidth = prevOverlaps.reduce((total, overlapId, c, all) => {
           const earlierAppointment = findAppointment(all[c - 1]);
 
@@ -161,6 +196,7 @@ export function calculatePositions(appointments, timeUnit = 'hour') {
 
         if (nextOverlaps.length) {
           width = width / (nextOverlaps.length + 1);
+          currentAppointment.nextOverlaps = true;
         }
       }
     }
