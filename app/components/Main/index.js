@@ -37,7 +37,7 @@ class Main extends React.Component {
         </header>
         <main className="CalendarContainer">
           <div className="AppointmentList">
-            <h1 className="AppointmentList-title"><time>1 augustus 2016</time></h1>
+            <h1 className="AppointmentList-title"><time>{ moment().format('d MMMM YYYY') }</time></h1>
             <DailyEvents displayHours={ 11 } appointments={ this.props.appointments } />
           </div>
           <div className="AddAppointment">
