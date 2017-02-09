@@ -232,6 +232,287 @@ exports[`Components DailyEvents Renders a scrollable list 1`] = `
 </div>
 `;
 
+exports[`Components DailyEvents Renders given appointments and looks at the time only (only care about start and end hour) 1`] = `
+<div
+  className="DailyEvents">
+  <div
+    className="DailyEvents-list">
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        07:00
+      </time>
+      <dl
+        className="DailyEvents-Appointment h-event"
+        style={
+          Object {
+            "height": "233.33333333333334%",
+            "left": "33.333333333333336%",
+            "top": "0%",
+            "width": "33.33333333333333%",
+          }
+        }>
+        <dt
+          className="DailyEvents-Appointment-time">
+          <time
+            className="dt-start"
+            dateTime="2017-02-08T07:00:00+01:00">
+            07:00
+          </time>
+          -
+          <time
+            className="dt-end"
+            dateTime="2017-02-08T09:20:00+01:00">
+            09:20
+          </time>
+        </dt>
+        <dd
+          className="DailyEvents-Appointment-content">
+          <h1
+            className="DailyEvents-Appointment-title p-name">
+            Wake up
+          </h1>
+        </dd>
+      </dl>
+      <dl
+        className="DailyEvents-Appointment h-event"
+        style={
+          Object {
+            "height": "171.66666666666666%",
+            "left": "66.66666666666666%",
+            "top": "0%",
+            "width": "33.33333333333334%",
+          }
+        }>
+        <dt
+          className="DailyEvents-Appointment-time">
+          <time
+            className="dt-start"
+            dateTime="2017-02-08T07:00:00+01:00">
+            07:00
+          </time>
+          -
+          <time
+            className="dt-end"
+            dateTime="2017-02-08T08:43:00+01:00">
+            08:43
+          </time>
+        </dt>
+        <dd
+          className="DailyEvents-Appointment-content">
+          <h1
+            className="DailyEvents-Appointment-title p-name">
+            Snooze
+          </h1>
+        </dd>
+      </dl>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        08:00
+      </time>
+      <dl
+        className="DailyEvents-Appointment h-event"
+        style={
+          Object {
+            "height": "900%",
+            "left": "0%",
+            "top": "0%",
+            "width": "33.333333333333336%",
+          }
+        }>
+        <dt
+          className="DailyEvents-Appointment-time">
+          <time
+            className="dt-start"
+            dateTime="2017-02-08T08:00:00+01:00">
+            08:00
+          </time>
+          -
+          <time
+            className="dt-end"
+            dateTime="2017-02-08T17:00:00+01:00">
+            17:00
+          </time>
+        </dt>
+        <dd
+          className="DailyEvents-Appointment-content">
+          <h1
+            className="DailyEvents-Appointment-title p-name">
+            Being awake
+          </h1>
+        </dd>
+      </dl>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        09:00
+      </time>
+      <dl
+        className="DailyEvents-Appointment h-event"
+        style={
+          Object {
+            "height": "66.66666666666666%",
+            "left": "33.333333333333336%",
+            "top": "33.33333333333333%",
+            "width": "66.66666666666666%",
+          }
+        }>
+        <dt
+          className="DailyEvents-Appointment-time">
+          <time
+            className="dt-start"
+            dateTime="2017-02-08T09:20:00+01:00">
+            09:20
+          </time>
+          -
+          <time
+            className="dt-end"
+            dateTime="2017-02-08T10:00:00+01:00">
+            10:00
+          </time>
+        </dt>
+        <dd
+          className="DailyEvents-Appointment-content">
+          <h1
+            className="DailyEvents-Appointment-title p-name">
+            Throw out alarm clock
+          </h1>
+        </dd>
+      </dl>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        10:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        11:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        12:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        13:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        14:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        15:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        16:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        17:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        18:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        19:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        20:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        21:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        22:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        23:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        00:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        01:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        02:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        03:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        04:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        05:00
+      </time>
+    </li>
+    <li
+      className="DailyEvents-Hour">
+      <time>
+        06:00
+      </time>
+    </li>
+  </div>
+</div>
+`;
+
 exports[`Components DailyEvents Renders with defaults 1`] = `
 <div
   className="DailyEvents">

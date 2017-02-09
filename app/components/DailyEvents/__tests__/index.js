@@ -27,5 +27,40 @@ describe('Components', () => {
 
       expect(tree).toMatchSnapshot();
     });
+
+    it('Renders given appointments and looks at the time only (only care about start and end hour)', () => {
+      const appointments = [
+        {
+          id: 1,
+          start: '2017-02-08 08:00',
+          end: '2017-02-08 17:00',
+          title: 'Being awake'
+        },
+        {
+          id: 2,
+          start: '2017-02-08 07:00',
+          end: '2017-02-08 09:20',
+          title: 'Wake up'
+        },
+        {
+          id: 3,
+          start: '2017-02-08 07:00',
+          end: '2017-02-08 08:43',
+          title: 'Snooze'
+        },
+        {
+          id: 4,
+          start: '2017-02-08 09:20',
+          end: '2017-02-08 10:00',
+          title: 'Throw out alarm clock'
+        }
+      ];
+
+      const tree = renderer.create(
+        <DailyEvents appointments={ appointments } />
+      ).toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
   });
 });

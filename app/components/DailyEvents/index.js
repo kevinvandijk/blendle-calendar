@@ -21,21 +21,22 @@ const DailyEvents = (props) => {
     <div className="DailyEvents">
       <div className={ listClassName }>
         {[...Array(displayHours)].map((a, i) => {
-          // TODO: None of this should be done here
-          // appointments should be passed into props in a different format
-          // will fix when introducing redux
-          const normalizedHour = startHour + i;
-          const startOfHour = moment().hour(normalizedHour).startOf('hour');
-          const endOfHour = moment().hour(normalizedHour).endOf('hour');
+          const displayHour = startHour + i;
+          const startOfHour = moment().hour(displayHour).startOf('hour');
+          const endOfHour = moment().hour(displayHour).endOf('hour');
 
           const display = appointments.filter((event) => {
-            return moment(event.start).within(moment.range(startOfHour, endOfHour));
+            // TODO: write helper
+            const startTime = event.start.split(' ')[1];
+            const eventStart = moment(startTime, 'HH:mm').format();
+
+            return moment(eventStart).within(moment.range(startOfHour, endOfHour));
           });
 
           return (
             <Hour
-              key={ `hour-${startHour + i}` }
-              label={ formatHours(startHour + i) }
+              key={ `hour-${displayHour}` }
+              label={ formatHours(displayHour) }
             >
               {
                 display.map((event) => {
