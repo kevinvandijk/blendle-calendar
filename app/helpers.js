@@ -97,12 +97,21 @@ export function formatHours(amountOfHours) {
 // Custom PropTypes, not chainable at the moment
 export const PropTypes = {
   ...ReactPropTypes,
+
   hour: chainablePropType((props, propName) => {
     if (props[propName] < 0 || props[propName] > 24) {
       return new Error(`\`${propName}\` should be a valid hour`);
     }
 
     return null;
+  }),
+
+  appointment: ReactPropTypes.shape({
+    title: ReactPropTypes.string.isRequired,
+    start: ReactPropTypes.string.isRequired,
+    end: ReactPropTypes.string.isRequired,
+    description: ReactPropTypes.string,
+    id: ReactPropTypes.string
   })
 };
 

@@ -9,12 +9,12 @@ import Form from '../Form';
 import InputField from '../Form/InputField';
 import Button from '../Form/Button';
 
-const { func, array } = PropTypes;
+const { func, arrayOf, appointment } = PropTypes;
 
 class Main extends React.Component {
   static propTypes = {
     addAppointment: func.isRequired,
-    appointments: array
+    appointments: arrayOf(appointment)
   }
 
   addAppointment = (details) => {
