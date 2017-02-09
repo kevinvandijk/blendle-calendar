@@ -81,12 +81,13 @@ class Form extends React.Component {
   render() {
     const childrenWithProps = React.Children.map(this.props.children,
      (child) => React.cloneElement(child, {
-       onChange: this.onChange
+       onChange: this.onChange,
+       onKeyUp: this.onKeyUp
      })
     );
 
     return (
-      <div onKeyUp={ this.onKeyUp }>
+      <div>
         { childrenWithProps }
       </div>
     );

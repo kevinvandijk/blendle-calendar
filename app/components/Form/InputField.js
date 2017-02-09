@@ -13,6 +13,7 @@ class InputField extends React.Component {
     onBlur: func,
     onFocus: func,
     onChange: func,
+    onKeyUp: func,
     autoFocus: bool
   }
 
@@ -150,6 +151,7 @@ class InputField extends React.Component {
               onChange={ this.onChange }
               onBlur={ this.onBlur }
               onFocus={ this.onFocus }
+              onKeyUp={ this.props.onKeyUp }
               autoFocus={ autoFocus }
               ref={ (ref) => { this.input = ref; } }
             />
@@ -162,6 +164,7 @@ class InputField extends React.Component {
               onChange={ this.onChange }
               onBlur={ this.onBlur }
               onFocus={ this.onFocus }
+              onKeyUp={ this.props.onKeyUp }
               autoFocus={ autoFocus }
               ref={ (ref) => { this.input = ref; } }
             />
