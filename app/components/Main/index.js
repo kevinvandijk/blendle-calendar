@@ -17,6 +17,10 @@ class Main extends React.Component {
     appointments: arrayOf(appointment)
   }
 
+  state = {
+    valid: false
+  }
+
   addAppointment = (details) => {
     const date = moment().format('YYYY-MM-DD');
     const start = `${date} ${details.start}`;
@@ -26,6 +30,16 @@ class Main extends React.Component {
       ...details,
       start,
       end
+    });
+  }
+
+  checkFields = (inputs) => {
+    const toValidate = inputs;
+    delete toValidate.description;
+
+    const invalid = Object.keys(toValidate).some((name) => !inputs[name].length);
+    this.setState({
+      valid: !invalid
     });
   }
 
@@ -41,12 +55,12 @@ class Main extends React.Component {
             <DailyEvents displayHours={ 11 } appointments={ this.props.appointments } />
           </div>
           <div className="AddAppointment">
-            <Form onSubmit={ this.addAppointment }>
+            <Form onSubmit={ this.addAppointment } onChange={ this.checkFields }>
               <InputField name="title" type="text" label="Title" />
               <InputField name="start" type="date" label="Start time" />
               <InputField name="end" type="date" label="End time" />
               <InputField name="description" type="textarea" label="Description" />
-              <Button label="Save" type="submit" />
+              <Button label="Save" type="submit" disabled={ !this.state.valid } />
               <Button label="Cancel" type="reset" />
             </Form>
           </div>

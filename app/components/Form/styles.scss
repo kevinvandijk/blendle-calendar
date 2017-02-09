@@ -56,4 +56,9 @@
       background: lighten(#14c674, 5);
     }
   }
+
+  &.Form-Button--isDisabled {
+    background: lighten(#14c674, 40);
+    pointer-events: none;
+  }
 }

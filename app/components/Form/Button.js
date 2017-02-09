@@ -1,17 +1,19 @@
 import React from 'react';
 import { PropTypes } from '../../helpers';
 
-const { string, oneOf, func } = PropTypes;
+const { string, oneOf, func, bool } = PropTypes;
 
 class Button extends React.Component {
   static propTypes = {
     label: string.isRequired,
     type: oneOf(['default', 'submit', 'reset']),
-    onClick: func
+    onClick: func,
+    disabled: bool
   }
 
   static defaultProps = {
-    type: 'default'
+    type: 'default',
+    disabled: false
   }
 
   static contextTypes = {
@@ -36,12 +38,13 @@ class Button extends React.Component {
   }
 
   render() {
-    const { type, label } = this.props;
+    const { type, label, disabled } = this.props;
     let buttonClass = 'Form-Button';
     if (type === 'submit') buttonClass = `${buttonClass} Form-Button--isPrimary`;
+    if (disabled) buttonClass = `${buttonClass} Form-Button--isDisabled`;
 
     return (
-      <button className={ buttonClass } onClick={ this.onClick }>
+      <button className={ buttonClass } onClick={ this.onClick } disabled={ disabled }>
         { label }
       </button>
     );

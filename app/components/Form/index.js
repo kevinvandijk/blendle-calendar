@@ -7,7 +7,8 @@ const { node, func } = PropTypes;
 class Form extends React.Component {
   static propTypes = {
     children: node,
-    onSubmit: func
+    onSubmit: func,
+    onChange: func
   }
 
   static childContextTypes = {
@@ -30,6 +31,10 @@ class Form extends React.Component {
       submit: this.submit,
       reset: this.reset
     };
+  }
+
+  onChange = () => {
+    if (this.props.onChange) this.props.onChange(this.getValues());
   }
 
   onKeyUp = (e) => {
@@ -74,9 +79,15 @@ class Form extends React.Component {
   }
 
   render() {
+    const childrenWithProps = React.Children.map(this.props.children,
+     (child) => React.cloneElement(child, {
+       onChange: this.onChange
+     })
+    );
+
     return (
       <div onKeyUp={ this.onKeyUp }>
-        { this.props.children }
+        { childrenWithProps }
       </div>
     );
   }
