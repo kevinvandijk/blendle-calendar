@@ -1,5 +1,6 @@
 exports[`Components Form Renders itself with children 1`] = `
-<div>
+<div
+  onKeyUp={[Function]}>
   <div>
     Form children woot
   </div>

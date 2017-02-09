@@ -20,7 +20,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    this.inputs = {};
+    this.inputs = [];
   }
 
   getChildContext() {
@@ -32,21 +32,32 @@ class Form extends React.Component {
     };
   }
 
+  onKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      const currentFocus = this.inputs.findIndex((i) => i.state.focused);
+      const nextIndex = currentFocus + 1;
+      if (this.inputs[nextIndex] && this.inputs[nextIndex]) {
+        this.inputs[nextIndex].input.focus();
+      }
+    }
+  }
+
   getValues() {
-    return Object.keys(this.inputs).reduce((values, name) => {
+    return this.inputs.reduce((values, input) => {
       return {
         ...values,
-        [name]: this.inputs[name].getValue()
+        [input.props.name]: input.getValue()
       };
     }, {});
   }
 
   attach = (component) => {
     this.inputs[component.props.name] = component;
+    this.inputs.push(component);
   }
 
   detach = (component) => {
-    delete this.inputs[component.props.name];
+    this.inputs = this.inputs.filter((input) => component.name !== input.name);
   }
 
   submit = () => {
@@ -57,14 +68,14 @@ class Form extends React.Component {
   }
 
   reset = () => {
-    Object.keys(this.inputs).forEach((name) => {
-      this.inputs[name].setValue('');
+    this.inputs.forEach((input) => {
+      input.setValue('');
     });
   }
 
   render() {
     return (
-      <div>
+      <div onKeyUp={ this.onKeyUp }>
         { this.props.children }
       </div>
     );
