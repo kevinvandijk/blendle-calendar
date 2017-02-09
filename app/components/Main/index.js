@@ -60,12 +60,16 @@ class Main extends React.Component {
           </div>
           <div className="AddAppointment">
             <Form onSubmit={ this.addAppointment } onChange={ this.checkFields }>
-              <InputField name="title" type="text" label="Title" autoFocus />
-              <InputField name="start" type="date" label="Start time" />
-              <InputField name="end" type="date" label="End time" />
-              <InputField name="description" type="textarea" label="Description" />
-              <Button label="Save" type="submit" disabled={ !this.state.valid } />
-              <Button label="Cancel" type="reset" />
+              <p className="AddAppointment-InputFields">
+                <InputField name="title" type="text" label="Title" autoFocus />
+                <InputField name="start" type="date" label="Start time" />
+                <InputField name="end" type="date" label="End time" />
+                <InputField name="description" type="textarea" label="Description" />
+              </p>
+              <p className="AddAppointment-Buttons">
+                <Button label="Save" type="submit" disabled={ !this.state.valid } />
+                <Button label="Cancel" type="reset" />
+              </p>
             </Form>
           </div>
         </main>
