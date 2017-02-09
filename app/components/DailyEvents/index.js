@@ -7,7 +7,6 @@ import { formatHours, PropTypes, calculatePositions } from '../../helpers';
 import './styles.scss';
 
 const moment = extendMoment(Moment);
-
 const { hour, bool, array } = PropTypes;
 
 const DailyEvents = (props) => {
